@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add Product Movement</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="movement_id">Movement ID</label>
+        <input type="text" class="form-control" id="movement_id" name="movement_id" required>
+    </div>
+    <div class="form-group">
+        <label for="from_location">From Location</label>
+        <select class="form-control" id="from_location" name="from_location">
+            <option value="">Select Location</option>
+            {% for location in locations %}
+            <option value="{{ location.location_id }}">{{ location.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="to_location">To Location</label>
+        <select class="form-control" id="to_location" name="to_location">
+            <option value="">Select Location</option>
+            {% for location in locations %}
+            <option value="{{ location.location_id }}">{{ location.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="product_id">Product</label>
+        <select class="form-control" id="product_id" name="product_id" required>
+            {% for product in products %}
+            <option value="{{ product.product_id }}">{{ product.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="qty">Quantity</label>
+        <input type="number" class="form-control" id="qty" name="qty" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Movement</button>
+</form>
+{% endblock %}
