@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Product Movements</h1>
+<a href="{{ url_for('add_movement') }}" class="btn btn-primary mb-3">Add Movement</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Movement ID</th>
+            <th>Timestamp</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movement in movements %}
+        <tr>
+            <td>{{ movement.movement_id }}</td>
+            <td>{{ movement.timestamp }}</td>
+            <td>{{ movement.from_location or 'N/A' }}</td>
+            <td>{{ movement.to_location or 'N/A' }}</td>
+            <td>{{ movement.product_id }}</td>
+            <td>{{ movement.qty }}</td>
+            <td>
+                <a href="{{ url_for('edit_movement', movement_id=movement.movement_id) }}" class="btn btn-sm btn-secondary">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

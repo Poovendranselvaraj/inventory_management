@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add Product</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="product_id">Product ID</label>
+        <input type="text" class="form-control" id="product_id" name="product_id" required>
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+</form>
+{% endblock %}
