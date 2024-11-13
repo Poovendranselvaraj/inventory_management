@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Balance Quantity Report</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Warehouse</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+            {% for location in locations %}
+                {% if balance[product.product_id][location.location_id] != 0 %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ location.name }}</td>
+                    <td>{{ balance[product.product_id][location.location_id] }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
